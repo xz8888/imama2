@@ -1,0 +1,39 @@
+{
+  "news": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": ""
+      }
+    }
+  },
+  "schools": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": ""
+      }
+    }
+  },
+  "new": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      }
+    }
+  },
+  "article": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": ""
+      }
+    }
+  }
+}
