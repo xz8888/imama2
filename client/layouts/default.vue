@@ -4,6 +4,7 @@
       <div class="hero-body">
         <div class="container">
           <h1 class="title">OrangeBear News</h1>
+          <nuxt-link to="/privateschools"> Private Schools</nuxt-link>
         </div>
       </div>
     </section>

@@ -25,7 +25,7 @@ module.exports = {
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
-
+    strapi.log.info(filters);
     return Article
       .find()
       .where(filters.where)
@@ -158,6 +158,8 @@ module.exports = {
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
+
+    strapi.log.info(filters);
 
     const $or = Object.keys(Article.attributes).reduce((acc, curr) => {
       switch (Article.attributes[curr].type) {

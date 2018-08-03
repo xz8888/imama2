@@ -1,0 +1,51 @@
+{
+  "connection": "default",
+  "collectionName": "school",
+  "info": {
+    "name": "school",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "images": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "tuition": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "grade": {
+      "type": "string"
+    },
+    "descriptions": {
+      "type": "text"
+    },
+    "tuitionranges": {
+      "collection": "tuitionrange",
+      "via": "school",
+      "dominant": true
+    }
+  }
+}

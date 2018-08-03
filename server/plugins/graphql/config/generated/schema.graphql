@@ -12,16 +12,25 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+enum ENUM_SCHOOL_TYPE {
+  public
+  private
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
 
-union Morph = Article | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union Morph = Article | School | Tuitionrange | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Query {
   article(id: ID!): Article
   articles(sort: String, limit: Int, start: Int, where: JSON): [Article]
+  school(id: ID!): School
+  schools(sort: String, limit: Int, start: Int, where: JSON): [School]
+  tuitionrange(id: ID!): Tuitionrange
+  tuitionranges(sort: String, limit: Int, start: Int, where: JSON): [Tuitionrange]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -31,6 +40,32 @@ type Query {
   roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
   user(id: ID!): UsersPermissionsUser
   users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type School {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  type: ENUM_SCHOOL_TYPE
+  images: UploadFile
+  tuition: String
+  language: String
+  link: String
+  website: String
+  grade: String
+  descriptions: String
+  tuitionranges(sort: String, limit: Int, start: Int, where: JSON): [Tuitionrange]
+}
+
+type Tuitionrange {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  low: Int
+  high: Int
+  name: String
+  school(sort: String, limit: Int, start: Int, where: JSON): [School]
 }
 
 type UploadFile {

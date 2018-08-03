@@ -16,6 +16,7 @@
     "@nuxtjs/bulma": "^1.2.0",
     "bulma": "^0.7.1",
     "font-awesome": "^4.7.0",
+    "iview": "^3.0.0",
     "nuxt": "^1.0.0",
     "strapi-sdk-javascript": "^0.2.1"
   },
@@ -25,6 +26,7 @@
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
+    "iview-loader": "^1.2.1",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.0.3"
   }

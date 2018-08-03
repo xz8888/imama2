@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "tuitionrange",
+  "info": {
+    "name": "tuitionrange",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "low": {
+      "type": "integer"
+    },
+    "high": {
+      "type": "integer"
+    },
+    "school": {
+      "collection": "school",
+      "via": "tuitionranges"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

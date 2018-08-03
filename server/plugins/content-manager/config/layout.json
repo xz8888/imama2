@@ -35,5 +35,53 @@
         "appearance": ""
       }
     }
+  },
+  "school": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "type": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": ""
+      },
+      "tuition": {
+        "appearance": ""
+      },
+      "language": {
+        "appearance": ""
+      },
+      "link": {
+        "appearance": ""
+      },
+      "website": {
+        "appearance": ""
+      },
+      "grade": {
+        "appearance": ""
+      },
+      "descriptions": {
+        "appearance": "WYSIWYG"
+      }
+    }
+  },
+  "tuitionRange": {
+    "attributes": {
+      "low": {
+        "appearance": ""
+      },
+      "high": {
+        "appearance": ""
+      }
+    }
+  },
+  "tuitionrange": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
   }
 }

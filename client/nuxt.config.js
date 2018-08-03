@@ -32,7 +32,8 @@ module.exports = {
     {
       src: 'font-awesome/scss/font-awesome.scss',
       lang: 'scss'
-    }
+    },
+     'iview/dist/styles/iview.css'
   ],
 
   build: {
@@ -48,12 +49,23 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+
+      config.module.rules.push({
+        test: /\.vue$/,
+        loader: 'iview-loader',
+        options: {
+          prefix: false
+        }
+      })
     },
     postcss: {
       plugins: {
         'postcss-custom-properties': false
       }
     }
-  }
+  },
+  plugins: [
+    {src: '~/plugins/iview.js', ssr: true}
+  ]
 }
 

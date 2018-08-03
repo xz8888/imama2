@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tuitionrange",
+      "handler": "Tuitionrange.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tuitionrange/count",
+      "handler": "Tuitionrange.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tuitionrange/:_id",
+      "handler": "Tuitionrange.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tuitionrange",
+      "handler": "Tuitionrange.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tuitionrange/:_id",
+      "handler": "Tuitionrange.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tuitionrange/:_id",
+      "handler": "Tuitionrange.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
