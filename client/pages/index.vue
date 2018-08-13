@@ -4,7 +4,7 @@
       <div class="container">
         <ul>
           <li v-for="article in articles" :key="article.id">
-            {{article.title}}
+            <router-link :to="{name: 'articles-id', params: {id: article.id}}">{{article.title}}</router-link>
           </li>
         </ul>
       </div>
@@ -57,7 +57,8 @@ export default {
     })
 
     response.data.articles.forEach(article => {
-      article.thumbnail.url = `${apiUrl}${article.thumbnail.url}`
+      if (article.thumbnail)
+        article.thumbnail.url = `${apiUrl}${article.thumbnail.url}`
       store.commit('articles/add', {
         id: article.id || article._id, 
         ...article
