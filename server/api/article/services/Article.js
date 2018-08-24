@@ -21,6 +21,7 @@ module.exports = {
     // Convert `params` object to filters compatible with Mongo.
     const filters = strapi.utils.models.convertParams('article', params);
     // Select field to populate.
+    console.log(Article.associations)
     const populate = Article.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)

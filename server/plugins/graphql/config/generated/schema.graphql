@@ -5,6 +5,7 @@ type Article {
   title: String
   description: String
   thumbnail: UploadFile
+  categories: JSON
 }
 
 """

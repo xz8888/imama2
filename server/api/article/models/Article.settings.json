@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "article",
   "info": {
     "name": "article",
     "description": ""
@@ -19,6 +19,9 @@
       "model": "file",
       "via": "related",
       "plugin": "upload"
+    },
+    "categories": {
+      "type": "json"
     }
   }
 }

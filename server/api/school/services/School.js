@@ -22,11 +22,13 @@ module.exports = {
     const filters = strapi.utils.models.convertParams('school', params);
     
     // Select field to populate.
-    const populate = School.associations
-      .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias)
-      .join(' ');
-
+    const populate = [{
+      path: 'tuitionranges', 
+      match: {
+        'name': 'level2'
+      }
+    }]
+    
     return School
       .find()
       .where(filters.where)
