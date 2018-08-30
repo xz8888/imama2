@@ -1,28 +1,66 @@
 <template>
   <div>
-    <section class="hero has text-centered is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">OrangeBear News</h1>
-          <nuxt-link to="/privateschools"> Private Schools</nuxt-link>
+    <nav class="navbar is-spaced has-shadow" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="../assets/images/logo.png" alt="Bulma: a modern CSS framework based on Flexbox"
+              width="170">
+          </a>
+
+          <a role="button" class="navbar-burger" aria-label="menu" arial-expand="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-start">
+            <router-link class="navbar-item" to="/">
+              首页
+            </router-link>
+            <div class="navbar-item">
+              <router-link class="navbar-link" to="/privateschools">
+                私校
+              </router-link>
+            </div>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
+                    data-social-target="http://localhost:4000" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms">
+                    <span class="icon">
+                      <i class="fas fa-ship"></i>
+                    </span>
+                    <span>
+                      Tweet
+                    </span>
+                  </a>
+                </p>
+                <p class="control">
+                  <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
+                    <span class="icon">
+                      <i class="fas fa-download"></i>
+                    </span>
+                    <span>Download</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-    <nuxt/>
+    </nav>
+    <main class="pd-main">
+       <nuxt />
+    </main>
   </div>
 </template>
 
 <style>
-html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+
 
 </style>
-

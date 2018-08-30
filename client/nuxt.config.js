@@ -30,10 +30,11 @@ module.exports = {
       lang: 'scss'
     },
     {
-      src: 'font-awesome/scss/font-awesome.scss',
+      src: '@fortawesome/fontawesome-free/scss/fontawesome.scss',
       lang: 'scss'
     },
-     'iview/dist/styles/iview.css'
+    '@fortawesome/fontawesome-free/scss/solid.scss',
+    '@fortawesome/fontawesome-free/scss/regular.scss'
   ],
 
   build: {

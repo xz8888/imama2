@@ -1,5 +1,22 @@
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/functions';
+
 // customize styles
-$black: #343434;
+$black: #3d464d;
+$orange: #EE5B2E;
+$navbar-padding-vertical: 1rem;
+$navbar-padding-horizontal: 0px;
+$link: $black;
+$primary: $orange;
+$link-hover: $orange;
+$fullhd: 1200px;
+$section-padding: 2rem 1.5rem;
+$section-padding-medium: 2rem 1.5rem;
+$section-padding-large: 2rem 1.5rem;
+$border-color: #e6e8eb;
+
 @import '~bulma';
+@import 'components/general.scss';
+@import 'components/header.scss';
+@import 'components/articles.scss';
+

@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
+    "dev-server": "API_URL=http://159.203.46.154:1337 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -13,11 +14,11 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.3.1",
     "@nuxtjs/bulma": "^1.2.0",
     "bulma": "^0.7.1",
-    "font-awesome": "^4.7.0",
     "iview": "^3.0.0",
-    "nuxt": "^1.0.0",
+    "nuxt": "^1.4.2",
     "strapi-sdk-javascript": "^0.2.1"
   },
   "devDependencies": {
@@ -27,7 +28,7 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
     "iview-loader": "^1.2.1",
-    "node-sass": "^4.9.2",
-    "sass-loader": "^7.0.3"
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0"
   }
 }
