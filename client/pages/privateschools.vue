@@ -42,7 +42,7 @@
         </div>
         <div class="column">
             <div class="container">
-              <div class="title">顶级私校</div>
+              <div class="title">私校Top10</div>
             </div>
         </div>
       </div>
