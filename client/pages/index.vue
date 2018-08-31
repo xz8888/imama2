@@ -68,7 +68,15 @@
         return this.$store.getters['articles/list']
       }
     },
-    
+    head () {
+      return {
+        title: "橘子熊首页,多伦多妈妈干货，生活信息分享", 
+        meta: [
+          { hid: '橘子熊首页,多伦多妈妈干货，生活信息分享', name: '橘子熊首页,多伦多妈妈干货，生活信息分享', content: '橘子熊首页,多伦多妈妈干货，生活信息分享' }
+        ]
+      }
+    },
+
     methods: {
     loadMore: function() {
       this.busy = true
