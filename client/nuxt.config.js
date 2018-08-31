@@ -66,7 +66,8 @@ module.exports = {
     }
   },
   plugins: [
-    {src: '~/plugins/iview.js', ssr: true}
+    {src: '~/plugins/iview.js', ssr: true}, 
+    {src: '~/plugins/infinite-scroll.js', ssr: true}
   ]
 }
 

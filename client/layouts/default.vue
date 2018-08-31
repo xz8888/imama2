@@ -17,14 +17,14 @@
 
         <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-start">
-            <router-link class="navbar-item" to="/">
+            <nuxt-link class="navbar-item" to="/">
               首页
-            </router-link>
-            <div class="navbar-item">
-              <router-link class="navbar-link" to="/privateschools">
+            </nuxt-link>
+            
+              <nuxt-link class="navbar-item" to="/privateschools">
                 私校
-              </router-link>
-            </div>
+              </nuxt-link>
+       
           </div>
           <div class="navbar-end">
             <div class="navbar-item">

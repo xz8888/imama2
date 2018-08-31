@@ -19,7 +19,8 @@
     "bulma": "^0.7.1",
     "iview": "^3.0.0",
     "nuxt": "^1.4.2",
-    "strapi-sdk-javascript": "^0.2.1"
+    "strapi-sdk-javascript": "^0.2.1",
+    "vue-infinite-scroll": "^2.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
