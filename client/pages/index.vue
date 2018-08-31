@@ -18,7 +18,7 @@
         
           <!-- Article Header Section Ends -->
           
-          <ul>
+           <ul v-infinite-scroll="loadMore"  infinite-scroll-disabled="busy && loadDisabled" infinite-scroll-distance="10">
             <li v-for="article in articles" :key="article.id" class="article-item">
               <div class="article-image" v-bind:style="{backgroundImage: 'url(' + article.thumbnail.url +')'}" >
                 
@@ -51,7 +51,11 @@
   export default {
     data() {
       return {
-        query: ''
+        query: '',
+        busy: false, 
+        start: 0, 
+        limit: 20,
+        loadDisabled: false
       }
     },
     computed: {
@@ -64,7 +68,60 @@
         return this.$store.getters['articles/list']
       }
     },
-    async fetch({
+    
+    methods: {
+    loadMore: function() {
+      this.busy = true
+
+      setTimeout(() => {
+        this._loadMore()
+        this.busy = false
+      }, 1000)
+    }, 
+
+    _loadMore: function() {
+      this.start += 20
+      let response = null
+      strapi.request('post', '/graphql', {
+      
+      data: {
+        query: `query {
+          articles (limit: ${this.limit}, start: ${this.start}) {
+            _id
+            title
+            description
+            thumbnail {
+              url
+            }
+          }
+        }  `
+      }
+    }).then((res)=> {
+      response = res
+
+      if (response.data.articles.length > 0){
+        response.data.articles.forEach(article=> {
+          if (article.thumbnail)
+            article.thumbnail.url = `${apiUrl}${article.thumbnail.url}`
+          else {
+            article.thumbnail = {}
+            article.thumbnail.url = ''
+          }
+            
+          this.$store.commit('articles/add', {
+            id: article.id || article._id,
+            ...article
+          })
+        })
+      } else {
+        this.loadDisabled = true
+      }
+
+    })
+  }
+},
+
+  async fetch({
       store
     }) {
       store.commit('articles/emptyList')

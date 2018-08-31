@@ -10,7 +10,7 @@
                 <div class="level-left">
                   <div class="level-item">
                     <i class="fas fa-circle title-icon"></i>
-                    <div class="title">私校</div>
+                    <div class="title">所有私校</div>
                   </div>
                 </div>
               </div>
@@ -25,7 +25,7 @@
               </div>
               <div class="school-title">
                 <div class="title">
-                  <router-link :to="{name: 'schools-id', params: {id: school.id}}">{{school.name}}</router-link>
+                  <nuxt-link :to="{name: 'school', params: {id: school.id}}">{{school.name}}</nuxt-link>
                 </div>
                 <div class="subtitle"></div>
                 <div class="description">
@@ -41,7 +41,9 @@
           </div>
         </div>
         <div class="column">
-          Auto
+            <div class="container">
+              <div class="title">顶级私校</div>
+            </div>
         </div>
       </div>
 
@@ -69,7 +71,7 @@ export default {
       this.busy = true
 
       setTimeout(() => {
-
+        this._loadMore()
         this.busy = false
       }, 1000)
     }, 
@@ -97,9 +99,7 @@ export default {
       }
     }).then((res)=> {
       response = res
-    })
-
-    response.data.schools.forEach(school=> {
+      response.data.schools.forEach(school=> {
       if (school.thumbnail)
         school.thumbnail.url = `${apiUrl}${school.thumbnail.url}`
       else {
@@ -107,10 +107,11 @@ export default {
         school.thumbnail.url = ''
       }
         
-      store.commit('schools/add', {
+      this.$store.commit('schools/add', {
         id: school.id || school._id,
         ...school
       })
+    })
     })
   }
 },
