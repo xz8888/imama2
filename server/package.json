@@ -20,8 +20,10 @@
   },
   "dependencies": {
     "lodash": "4.x.x",
-    "strapi": "3.0.0-alpha.13.0.1",
-    "strapi-hook-mongoose": "3.0.0-alpha.13.0.1"
+    "strapi": "^3.0.0-alpha.14",
+    "strapi-hook-mongoose": "3.0.0-alpha.13.0.1",
+    "strapi-upload-aws-s3": "^3.0.0-alpha.14",
+    "strapi-upload-cloudinary": "^3.0.0-alpha.14"
   },
   "author": {
     "name": "sean.xiao",
