@@ -1,16 +1,22 @@
 <template>
-    <div>
-        <section class="container">
-            {{article.title}}
+  
+    <section class="section">
+        <div class="container">
+            <div class="columns is-variable is-8">
+                <div class="column is-two-thirds ">
+                    <h2>{{article.title}}</h2>   
+                    <div v-html="article.description">
+                    </div>
+                </div>
+             </div>
+        </div>
+    </section>
    
-        </section>
-    </div>
 </template>
 
 <script>
 import Strapi from 'strapi-sdk-javascript/build/main'
-const apiUrl = process.env.API_URL || 'http://localhost:1337'
-const strapi = new Strapi(apiUrl)
+const strapi = new Strapi(process.env.apiUrl)
 
     export default {
         data() {
@@ -24,18 +30,21 @@ const strapi = new Strapi(apiUrl)
             }
         },
         async fetch ({ store, params }) {
-            store.commit('article/empty')
+            // store.commit('article/empty')
+            console.log(process.env.apiUrl)
             const response = await strapi.request('post', '/graphql', {
                 data: {
                     query: `query {
                         article (id: "${params.id}"){
                             _id
                             title
+                            description
                         }
                     }`
                 }
             })
-            
+            console.log(response)
+            console.log('are you there')
             store.commit('article/set', {
                 id: response.data.article.id || response.data.article._id, 
                 ...response.data.article

@@ -36,6 +36,9 @@ module.exports = {
     '@fortawesome/fontawesome-free/scss/solid.scss',
     '@fortawesome/fontawesome-free/scss/regular.scss'
   ],
+  env: {
+    apiUrl: process.env.API_URL || 'http://localhost:1337'
+  },
 
   build: {
     /*

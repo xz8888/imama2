@@ -54,8 +54,7 @@
 
 <script>
 import Strapi from 'strapi-sdk-javascript/build/main'
-const apiUrl = process.env.API_URL || 'http://localhost:1337'
-const strapi = new Strapi(apiUrl)
+const strapi = new Strapi(process.env.apiUrl)
 
 export default {
   data() {
@@ -101,7 +100,7 @@ export default {
       response = res
       response.data.schools.forEach(school=> {
       if (school.thumbnail)
-        school.thumbnail.url = `${apiUrl}${school.thumbnail.url}`
+        school.thumbnail.url = `${process.env.apiUrl}${school.thumbnail.url}`
       else {
         school.thumbnail = {}
         school.thumbnail.url = ''
@@ -128,7 +127,8 @@ export default {
   },
   async fetch({store}) {
     // store.commit('schools/emptyList')
-
+    console.log("The environment variable is ");
+    console.log(process.env);
     const response = await strapi.request('post', '/graphql', {
       data: {
         query: `query {
@@ -148,20 +148,23 @@ export default {
           `
       }
     })
+    
+    if (response.data.schools){
+      response.data.schools.forEach(school=> {
+          if (school.thumbnail)
+            school.thumbnail.url = `${process.env.apiUrl}${school.thumbnail.url}`
+          else {
+            school.thumbnail = {}
+            school.thumbnail.url = ''
+          }
+            
+          store.commit('schools/add', {
+            id: school.id || school._id,
+            ...school
+          })
+        })
+    }
 
-    response.data.schools.forEach(school=> {
-      if (school.thumbnail)
-        school.thumbnail.url = `${apiUrl}${school.thumbnail.url}`
-      else {
-        school.thumbnail = {}
-        school.thumbnail.url = ''
-      }
-        
-      store.commit('schools/add', {
-        id: school.id || school._id,
-        ...school
-      })
-    })
   }
 }
 </script>

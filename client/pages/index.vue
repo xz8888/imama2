@@ -23,9 +23,9 @@
               <div class="article-image" v-bind:style="{backgroundImage: 'url(' + article.thumbnail.url +')'}" >
                 
               </div>
-              <div class="article-title">
+              <div class="article-title" >
                 <div class="title">
-                  <router-link :to="{name: 'articles-id', params: {id: article.id}}">{{article.title}}</router-link>
+                  <a :href="'articles/' + article.id" target="_blank">{{article.title}}</a>
                 </div>
                 <div class="subtitle">这是个测试</div>
               </div>
@@ -34,7 +34,12 @@
           </div>
         </div>
         <div class="column">
-          Auto
+            <div class="yuna-block yuna-bottom-border">
+              <div class="title">最新活动</div>
+              <div class="yuna-block">
+                <Activity :activities="activities" v-if="activities.length > 0"></Activity>
+              </div>
+            </div>
         </div>
       </div>
 
@@ -45,8 +50,8 @@
 
 <script>
   import Strapi from 'strapi-sdk-javascript/build/main'
-  const apiUrl = process.env.API_URL || 'http://localhost:1337'
-  const strapi = new Strapi(apiUrl)
+  import Activity from '../components/Activity'
+  const strapi = new Strapi(process.env.apiUrl)
 
   export default {
     data() {
@@ -58,6 +63,9 @@
         loadDisabled: false
       }
     },
+    components: {
+      Activity
+    },
     computed: {
       filteredList() {
         return this.articles.filter(article => {
@@ -66,6 +74,9 @@
       },
       articles() {
         return this.$store.getters['articles/list']
+      },
+      activities() {
+        return this.$store.getters['activities/list']
       }
     },
     head () {
@@ -110,7 +121,7 @@
       if (response.data.articles.length > 0){
         response.data.articles.forEach(article=> {
           if (article.thumbnail)
-            article.thumbnail.url = `${apiUrl}${article.thumbnail.url}`
+            article.thumbnail.url = `${process.env.apiUrl}${article.thumbnail.url}`
           else {
             article.thumbnail = {}
             article.thumbnail.url = ''
@@ -137,7 +148,7 @@
       const response = await strapi.request('post', '/graphql', {
         data: {
           query: `query {
-          articles {
+          articles (limit: 20, start: 0) {
             _id
             title
             description
@@ -151,7 +162,7 @@
       })
       response.data.articles.forEach(article => {
         if (article.thumbnail)
-          article.thumbnail.url = `${apiUrl}${article.thumbnail.url}`
+          article.thumbnail.url = `${process.env.apiUrl}${article.thumbnail.url}`
         else {
           article.thumbnail = {}
           article.thumbnail.url = ''
@@ -160,6 +171,38 @@
         store.commit('articles/add', {
           id: article.id || article._id,
           ...article
+        })
+      })
+
+      store.commit('activities/emptyList')
+
+      const response2 = await strapi.request('post', '/graphql', {
+        data: {
+          query: `query {
+          activities (limit: 20, start: 0) {
+            _id
+            title
+            description
+            thumbnail {
+              url
+            }
+          }
+        }
+          `
+        }
+      })
+
+      response2.data.activities.forEach(activity => {
+        if (activity.thumbnail)
+          activity.thumbnail.url = `${process.env.apiUrl}${activity.thumbnail.url}`
+        else {
+          activity.thumbnail = {}
+          activity.thumbnail.url = ''
+        }
+       
+        store.commit('activities/add', {
+          id: activity.id || activity._id,
+          ...activity
         })
       })
     }
