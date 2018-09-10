@@ -1,0 +1,10 @@
+[Settings]
+ID = "adoring-keller-d162f4"
+
+[build]
+base = "client"
+publish = "client/dist"
+command = "npm run generate"
+
+[context.production]
+environment = {API_URL: "http://159.203.46.154:1337}
