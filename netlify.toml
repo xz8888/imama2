@@ -7,4 +7,4 @@ publish = "client/dist"
 command = "npm run generate"
 
 [context.production]
-environment = {API_URL: "http://159.203.46.154:1337}
+environment = {API_URL: "http://159.203.46.154:1337"}
